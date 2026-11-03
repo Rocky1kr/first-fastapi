@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lotto 6/45</title>
+    <style>
+        body {
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #f5f5f5;
+            font-family: "Malgun Gothic", sans-serif;
+        }
+        .card {
+            width: 570px;
+            box-sizing: border-box;
+            padding: 36px 40px 40px;
+            background: #fff;
+            border: 1px solid #0f9a7b;
+            border-radius: 16px;
+            text-align: center;
+        }
+        .logo { font-size: 44px; font-weight: 900; color: #0a4fa8; }
+        .logo span { font-size: 22px; color: #0a4fa8; }
+        .round-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 10px;
+            padding-bottom: 24px;
+            border-bottom: 1px solid #e5e5e5;
+        }
+        .arrow {
+            width: 56px; height: 56px;
+            border-radius: 50%;
+            border: 1px solid #333;
+            background: #fff;
+            font-size: 22px;
+            cursor: pointer;
+        }
+        .arrow.light { border-color: #aaa; color: #aaa; }
+        .round { font-size: 28px; font-weight: 500; }
+        .date { margin-top: 6px; font-size: 16px; color: #888; }
+        .balls {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin: 50px 0;
+            padding: 0;
+            list-style: none;
+        }
+        .ball {
+            width: 50px; height: 50px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #fff;
+            font-size: 19px;
+            font-weight: 700;
+        }
+        .yellow { background: #f5b800; }
+        .blue   { background: #0a5fcc; }
+        .red    { background: #d9304f; }
+        .gray   { background: #6e7585; }
+        .green  { background: #2e9e47; }
+        .prize-label { font-size: 17px; font-weight: 700; color: #777; }
+        .prize { margin: 14px 0 36px; }
+        .prize strong { font-size: 44px; }
+        .prize .unit { font-size: 32px; font-weight: 500; }
+        .prize small { font-size: 18px; }
+        .buttons { display: flex; justify-content: center; gap: 20px; }
+        .btn {
+            padding: 20px 30px;
+            border: none;
+            border-radius: 14px;
+            font-size: 19px;
+            font-weight: 700;
+            cursor: pointer;
+        }
+        .btn.sub { background: #e4f0ee; color: #222; }
+        .btn.main { background: #0f9a7b; color: #fff; padding: 20px 46px; }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <div class="logo">Lotto <span>6/45</span></div>
+
+        <div class="round-row">
+            <button class="arrow">←</button>
+            <div>
+                <div class="round">1248회</div>
+                <div class="date">2026.10.31</div>
+            </div>
+            <button class="arrow light">→</button>
+        </div>
+
+        <ul class="balls">
+            {% for number in numbers %}
+            <li class="ball {% if number <= 10 %}yellow{% elif number <= 20 %}blue{% elif number <= 30 %}red{% elif number <= 40 %}gray{% else %}green{% endif %}">{{ number }}</li>
+            {% endfor %}
+        </ul>
+
+        <div class="prize-label">1등 당첨금</div>
+        <div class="prize">
+            <strong>290.0</strong> <span class="unit">억원</span>
+            <small>(15명/19.3억)</small>
+        </div>
+
+        <div class="buttons">
+            <button class="btn sub">추첨결과 상세</button>
+            <button class="btn main">바로구매</button>
+        </div>
+    </div>
+</body>
+</html>
